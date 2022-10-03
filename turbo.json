@@ -1,0 +1,22 @@
+{
+	"$schema": "https://turborepo.org/schema.json",
+	"pipeline": {
+		"build": {
+			"dependsOn": ["^build"],
+			"outputs": ["dist/**", ".build/**", ".svelte-kit/**"]
+		},
+		"lint": {
+			"outputs": [],
+			"outputMode": "new-only"
+		},
+		"format": {
+			"outputs": [],
+			"cache": false,
+			"outputMode": "new-only"
+		},
+		"dev": {
+			"cache": false,
+			"outputMode": "new-only"
+		}
+	}
+}

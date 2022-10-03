@@ -1,0 +1,23 @@
+{
+	"$schema": "https://json.schemastore.org/package.json",
+	"name": "sveltekit-wundergraph",
+	"version": "0.0.1",
+	"author": "Richard Moore <rm86@outlook.com>",
+	"description": "This is a pnpm monorepo demonstrating a SvelteKit frontend app and WunderGraph backend",
+	"scripts": {
+		"preinstall": "node -e \"if(process.env.npm_execpath.indexOf('pnpm') === -1) throw new Error('You must use pnpm')\"",
+		"db": "pnpm -F database",
+		"sk": "pnpm -F sveltekit",
+		"wg": "pnpm -F wundergraph"
+	},
+	"devDependencies": {
+		"turbo": "latest",
+		"prettier": "latest"
+	},
+	"engines": {
+		"npm": "please-use-pnpm",
+		"yarn": "please-use-pnpm",
+		"node": ">=16.0.0",
+		"pnpm": ">=7.0.0"
+	}
+}
