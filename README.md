@@ -6,7 +6,7 @@ The web app (SvelteKit) fetches from an API (WunderGraph), which stores data in 
 
 The data schema is very simple - just Users and Posts.
 
-#### Database
+#### Database
 
 To keep the demo lean WunderGraph uses a sqlite database, but it is easy to change the db provider via the Prisma config (`database/schema.prisma`) to postgresql, mysql, sqlserver, mongodb, or cockroachdb. Be sure to also update `wundergraph/wundergraph.config.ts` to use the appropriate introspect function.
 
