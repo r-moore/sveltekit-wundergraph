@@ -55,7 +55,7 @@ useSubscription("ReadPosts", (result) => {
 ```ts
 const { mutate } = useMutation("CreatePost");
 
-const submitHandler = () => createPost({ input: newPost });
+const submitHandler = () => mutate({ input: newPost });
 ```
 
 ## Todo
