@@ -53,3 +53,7 @@ const submitHandler = () => createPost({ input: newPost });
 - Implement Optimistic UI updates when mutating Posts (don't wait for the next liveQuery to update store, requires use of a global cache-key and cache invalidation)
 - Implement UpdatePost (edit a Post), handling scenario where it has been deleted on server while editing
 - Add simple Service Worker to demo working offline
+
+#### Attribution
+
+This work was heavily inspired by [koleok](https://github.com/Koleok)'s [realtime-chat](https://github.com/Koleok/sveltekit-wundergraph-postgresql-realtime-chat/blob/main/src/lib/wundergraph.store.ts) repo.
