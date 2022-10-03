@@ -1,0 +1,21 @@
+:root {
+	/* colors */
+	--slate-050: #f8fafc;
+	--slate-100: #f1f5f9;
+	--slate-200: #e2e8f0;
+	--slate-300: #cbd5e1;
+	--slate-400: #94a3b8;
+	--slate-500: #64748b;
+	--slate-600: #475569;
+	--slate-700: #334155;
+	--slate-800: #1e293b;
+	--slate-900: #0f172a;
+
+	/* spacing */
+	--spacing-1: 0.25rem;
+	--spacing-2: 0.5rem;
+	--spacing-3: 0.75rem;
+	--spacing-4: 1rem;
+	--spacing-5: 1.25rem;
+	--spacing-6: 1.5rem;
+}
