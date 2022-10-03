@@ -1,1 +1,3 @@
-generated
+generated/bundle
+generated/introspection
+generated/prisma
