@@ -35,7 +35,7 @@
 
 <form on:submit|preventDefault={submitHandler}>
 	<TextInput bind:value={newPost} />
-	<Button type="submit">Add Message</Button>
+	<Button type="submit">Add Post</Button>
 </form>
 
 <style>

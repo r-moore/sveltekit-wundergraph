@@ -46,12 +46,6 @@ export function useQuery<T extends keyof Queries>(
 	};
 }
 
-/**
- * Creates a live query that initializes with svelte#onMount and aborts on unmount.
- *
- * @param operationName the name of a WunderGraph operation
- * @param onUpdate Function to run when query result is updated
- */
 export function useSubscription<T extends keyof LiveQueries>(
 	operationName: T,
 	onUpdate: (response: ClientResponse<LiveQueries[T]["data"]>) => void
