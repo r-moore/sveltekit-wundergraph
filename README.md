@@ -6,6 +6,16 @@ The web app (SvelteKit) fetches from an API (WunderGraph), which stores data in 
 
 The data schema is very simple - just Users and Posts.
 
+## Quickstart
+
+This is a pnpm monorepo, you should [install pnpm](https://pnpm.io/next/installation) first (`npm install -g pnpm`).
+
+1. `pnpm install` - installs dependencies for all workspaces in the repo
+2. `pnpm db prisma migrate dev` - seeds a local sqlite database with the correct schema and sample data.
+3. `pnpm dev` - run's the dev script in `wundergraph` and `sveltekit` repos
+
+Once the devserver is running you can access it at `http://localhost:3000`.
+
 #### Database
 
 To keep the demo lean WunderGraph uses a sqlite database, but it is easy to change the db provider via the Prisma config (`database/schema.prisma`) to postgresql, mysql, sqlserver, mongodb, or cockroachdb. Be sure to also update `wundergraph/wundergraph.config.ts` to use the appropriate introspect function.
