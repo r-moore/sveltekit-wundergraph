@@ -7,6 +7,7 @@ The web app (SvelteKit) fetches from an API (WunderGraph), which stores data in 
 The data schema is very simple - just Users and Posts.
 
 #### Database
+
 To keep the demo lean WunderGraph uses a sqlite database, but it is easy to change the db provider via the Prisma config (`database/schema.prisma`) to postgresql, mysql, sqlserver, mongodb, or cockroachdb. Be sure to also update `wundergraph/wundergraph.config.ts` to use the appropriate introspect function.
 
 #### SvelteKit Store
@@ -21,7 +22,7 @@ This demo contains a custom WunderGraph store (`wundergraph.store.ts`) which sim
 
 Example usage:
 
-```
+```ts
 // will fetch results once
 const { status, refetch, result } = useQuery("ReadPosts");
 
@@ -32,16 +33,16 @@ $: posts = result.data.db_findManyPost;
 const buttonClickHandler = () => refetch();
 ```
 
-```
+```ts
 // will open a connection to wundergraph and continuosly receive results every 1 second
 useSubscription("ReadPosts", (result) => {
-    if (result.data) {
-        posts = result.data.db_findManyPost;
-    }
+	if (result.data) {
+		posts = result.data.db_findManyPost;
+	}
 });
 ```
 
-```
+```ts
 const { mutate } = useMutation("CreatePost");
 
 const submitHandler = () => createPost({ input: newPost });
