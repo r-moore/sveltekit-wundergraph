@@ -1,0 +1,12 @@
+{
+	"$schema": "https://json.schemastore.org/package.json",
+	"name": "database",
+	"scripts": {
+		"prisma": "prisma"
+	},
+	"devDependencies": {
+		"@prisma/client": "4.4.0",
+		"prisma": "4.4.0",
+		"uuid": "9.0.0"
+	}
+}
