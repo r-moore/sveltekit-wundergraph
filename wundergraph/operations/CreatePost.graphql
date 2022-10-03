@@ -1,0 +1,5 @@
+mutation CreatePost($input: db_PostCreateInput!) {
+	db_createOnePost(data: $input) {
+		id
+	}
+}

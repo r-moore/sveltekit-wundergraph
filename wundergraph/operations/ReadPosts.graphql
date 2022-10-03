@@ -1,0 +1,10 @@
+query ReadPosts {
+	db_findManyPost(orderBy: { created_at: desc }) {
+		id
+		User {
+			username
+		}
+		body
+		created_at
+	}
+}

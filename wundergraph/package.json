@@ -1,0 +1,19 @@
+{
+	"$schema": "https://json.schemastore.org/package.json",
+	"name": "wundergraph",
+	"version": "0.0.1",
+	"scripts": {
+		"start": "wunderctl --wundergraph-dir ./ up",
+		"dev": "wunderctl --wundergraph-dir ./ up",
+		"generate": "wunderctl --wundergraph-dir ./ generate",
+		"check": "tsc",
+		"wunderctl": "wunderctl --wundergraph-dir ./"
+	},
+	"devDependencies": {
+		"@types/node": "^18.8.0",
+		"@wundergraph/sdk": "^0.114.2",
+		"@wundergraph/wunderctl": "^0.111.2",
+		"graphql": "^16.6.0",
+		"typescript": "^4.8.4"
+	}
+}

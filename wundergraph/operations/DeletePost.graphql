@@ -1,0 +1,5 @@
+mutation DeletePost($id: Int!) {
+	db_deleteOnePost(where: { id: $id }) {
+		id
+	}
+}
