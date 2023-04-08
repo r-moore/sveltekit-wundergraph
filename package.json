@@ -1,22 +1,22 @@
 {
-	"$schema": "https://json.schemastore.org/package.json",
-	"name": "sveltekit-wundergraph",
-	"version": "0.0.1",
-	"author": "Rich Moore @rmjersey",
-	"description": "This is a pnpm monorepo demonstrating a SvelteKit frontend app and WunderGraph backend",
-	"scripts": {
-		"preinstall": "node -e \"if(process.env.npm_execpath.indexOf('pnpm') === -1) throw new Error('You must use pnpm instead of npm/yarn')\"",
-		"db": "pnpm -F database",
-		"sk": "pnpm -F sveltekit",
-		"wg": "pnpm -F wundergraph",
-		"dev": "turbo dev",
-		"build": "turbo build"
-	},
-	"devDependencies": {
-		"turbo": "latest"
-	},
-	"engines": {
-		"node": ">=16.0.0",
-		"pnpm": ">=7.0.0"
-	}
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "sveltekit-wundergraph",
+  "version": "0.0.2",
+  "author": "Rich Moore @rmjersey",
+  "description": "This is a pnpm monorepo demonstrating a SvelteKit frontend app and WunderGraph backend",
+  "scripts": {
+    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('pnpm') === -1) throw new Error('You must use pnpm instead of npm/yarn')\"",
+    "db": "pnpm -F database",
+    "sk": "pnpm -F sveltekit",
+    "wg": "pnpm -F wundergraph",
+    "dev": "turbo dev",
+    "build": "turbo build"
+  },
+  "devDependencies": {
+    "turbo": "^1.8.8"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "pnpm": ">=7.0.0"
+  }
 }
