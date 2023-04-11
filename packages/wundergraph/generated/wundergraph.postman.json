@@ -2,56 +2,10 @@
   "item": [
     {
       "_": {
-        "postman_id": "Queries"
+        "postman_id": "operations"
       },
-      "id": "Queries",
-      "name": "Queries",
-      "description": {
-        "content": "All your query operations",
-        "type": "text/plain"
-      },
-      "item": [
-        {
-          "id": "ReadPosts",
-          "name": "ReadPosts",
-          "request": {
-            "url": {
-              "path": [
-                "app",
-                "main",
-                "operations",
-                "ReadPosts"
-              ],
-              "host": [
-                "{{apiBaseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET"
-          },
-          "response": [],
-          "event": []
-        }
-      ],
-      "event": []
-    },
-    {
-      "_": {
-        "postman_id": "Mutations"
-      },
-      "id": "Mutations",
-      "name": "Mutations",
-      "description": {
-        "content": "All your mutation operations",
-        "type": "text/plain"
-      },
+      "id": "operations",
+      "name": "operations",
       "item": [
         {
           "id": "CreatePost",
@@ -59,8 +13,6 @@
           "request": {
             "url": {
               "path": [
-                "app",
-                "main",
                 "operations",
                 "CreatePost"
               ],
@@ -85,8 +37,6 @@
           "request": {
             "url": {
               "path": [
-                "app",
-                "main",
                 "operations",
                 "DeletePost"
               ],
@@ -111,6 +61,32 @@
                 }
               ]
             }
+          },
+          "response": [],
+          "event": []
+        },
+        {
+          "id": "ReadPosts",
+          "name": "ReadPosts",
+          "request": {
+            "url": {
+              "path": [
+                "operations",
+                "ReadPosts"
+              ],
+              "host": [
+                "{{apiBaseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
           },
           "response": [],
           "event": []

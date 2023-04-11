@@ -15,7 +15,7 @@
 
 	const submitHandler = async () => {
 		await createPost({
-			input: { body: newPost, User: { connect: { username: "demouser" } } },
+			input: { body: newPost, User: { connect: { username: "demo_user" } } },
 		});
 		newPost = "";
 	};

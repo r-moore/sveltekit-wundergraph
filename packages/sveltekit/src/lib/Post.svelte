@@ -4,7 +4,7 @@
 
 	import type { ReadPostsResponseData } from "wundergraph/generated/models";
 	import { useMutation } from "$lib/wundergraph.store";
-	const { mutate: deletePost, status } = useMutation("DeletePost");
+	const { mutate: deletePost } = useMutation("DeletePost");
 
 	export let post: ReadPostsResponseData["db_findManyPost"][number];
 </script>

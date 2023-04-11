@@ -2,9 +2,9 @@ import { onMount } from "svelte";
 import { derived, writable } from "svelte/store";
 import {
 	createClient,
-	type Queries,
 	type LiveQueries,
 	type Mutations,
+	type Queries,
 } from "wundergraph/generated/client";
 import type { ClientResponse } from "@wundergraph/sdk/client";
 
@@ -22,15 +22,19 @@ export function useQuery<T extends keyof Queries>(
 	input: Queries[T]["input"]
 ) {
 	const status = writable<Status>("loading");
-	const result = writable<ClientResponse<Queries[T]["data"]>>();
+	const result = writable<Queries[T]["response"]>();
 
 	const fetchResult = async () => {
 		status.set("loading");
 		fetching.set(true);
 		try {
 			const res = await client.query({ operationName, input });
-			result.set(res);
-			status.set("loaded");
+			if (res.data) {
+				result.set(res.data);
+				status.set("loaded");
+			} else {
+				status.set("error");
+			}
 		} catch (err) {
 			status.set("error");
 		}
@@ -48,7 +52,7 @@ export function useQuery<T extends keyof Queries>(
 
 export function useSubscription<T extends keyof LiveQueries>(
 	operationName: T,
-	onUpdate: (response: ClientResponse<LiveQueries[T]["data"]>) => void
+	onUpdate: (response: ClientResponse<LiveQueries[T]["response"]>) => void
 ) {
 	// when the component using	 this hook mounts...
 	onMount(async () => {

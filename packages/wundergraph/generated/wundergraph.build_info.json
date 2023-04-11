@@ -1,0 +1,18 @@
+{
+  "sdk": {
+    "version": "0.143.1"
+  },
+  "wunderctl": {
+    "version": "0.138.0"
+  },
+  "node": {
+    "version": "v16.17.1"
+  },
+  "os": {
+    "type": "Darwin",
+    "platform": "darwin",
+    "arch": "arm64",
+    "version": "Darwin Kernel Version 22.3.0: Mon Jan 30 20:39:35 PST 2023; root:xnu-8792.81.3~2/RELEASE_ARM64_T8103",
+    "release": "22.3.0"
+  }
+}

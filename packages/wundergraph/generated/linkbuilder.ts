@@ -101,6 +101,26 @@ interface TargetTypes {
 	db_AggregateUser: "_count" | "_avg" | "_sum" | "_min" | "_max" | "_join";
 	db_UserGroupByOutputType: "id" | "username" | "created_at" | "_count" | "_avg" | "_sum" | "_min" | "_max" | "_join";
 	db_AffectedRowsOutput: "count" | "_join";
+	_Row:
+		| "ID"
+		| "Int"
+		| "Float"
+		| "String"
+		| "Boolean"
+		| "DateTime"
+		| "JSON"
+		| "Object"
+		| "Array"
+		| "OptionalID"
+		| "OptionalInt"
+		| "OptionalFloat"
+		| "OptionalString"
+		| "OptionalBoolean"
+		| "OptionalDateTime"
+		| "OptionalJSON"
+		| "OptionalObject"
+		| "OptionalArray"
+		| "_join";
 }
 
 interface SourceFields {
@@ -172,7 +192,14 @@ interface SourceFields {
 	db_findUniqueUser: {
 		where: null;
 	};
-	gql_hello: {};
+	db_queryRaw: {
+		query: null;
+		parameters: null;
+	};
+	db_queryRawJSON: {
+		query: null;
+		parameters: null;
+	};
 }
 
 const linkBuilder = sourceStep<SourceFields, TargetTypes>();
