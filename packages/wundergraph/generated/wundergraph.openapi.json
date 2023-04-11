@@ -1,0 +1,358 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "WunderGraph Application",
+    "version": "0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:9991/operations"
+    }
+  ],
+  "paths": {
+    "/CreatePost": {
+      "post": {
+        "operationId": "CreatePost",
+        "x-wundergraph-operation-type": "mutation",
+        "x-wundergraph-requires-authentication": false,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "input": {
+                    "$ref": "#/definitions/db_PostCreateInput"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "input"
+                ],
+                "definitions": {
+                  "db_PostCreateInput": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "body": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "User": {
+                        "$ref": "#/definitions/db_UserCreateNestedOneWithoutPostInput"
+                      }
+                    },
+                    "required": [
+                      "body",
+                      "User"
+                    ]
+                  },
+                  "db_UserCreateNestedOneWithoutPostInput": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "create": {
+                        "$ref": "#/definitions/db_UserCreateWithoutPostInput"
+                      },
+                      "connectOrCreate": {
+                        "$ref": "#/definitions/db_UserCreateOrConnectWithoutPostInput"
+                      },
+                      "connect": {
+                        "$ref": "#/definitions/db_UserWhereUniqueInput"
+                      }
+                    }
+                  },
+                  "db_UserCreateWithoutPostInput": {
+                    "additionalProperties": false,
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "username": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "db_UserCreateOrConnectWithoutPostInput": {
+                    "additionalProperties": false,
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "where": {
+                        "$ref": "#/definitions/db_UserWhereUniqueInput"
+                      },
+                      "create": {
+                        "$ref": "#/definitions/db_UserCreateWithoutPostInput"
+                      }
+                    }
+                  },
+                  "db_UserWhereUniqueInput": {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": [
+                          "integer",
+                          "null"
+                        ]
+                      },
+                      "username": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "db_createOnePost": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "id"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidInputError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/DeletePost": {
+      "post": {
+        "operationId": "DeletePost",
+        "x-wundergraph-operation-type": "mutation",
+        "x-wundergraph-requires-authentication": false,
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "id"
+                ]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "db_deleteOnePost": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer"
+                            }
+                          },
+                          "additionalProperties": false,
+                          "required": [
+                            "id"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidInputError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ReadPosts": {
+      "get": {
+        "operationId": "ReadPosts",
+        "x-wundergraph-operation-type": "query",
+        "x-wundergraph-requires-authentication": false,
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "db_findManyPost": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer"
+                              },
+                              "User": {
+                                "type": "object",
+                                "properties": {
+                                  "username": {
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "username"
+                                ]
+                              },
+                              "body": {
+                                "type": "string"
+                              },
+                              "created_at": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "id",
+                              "User",
+                              "body",
+                              "created_at"
+                            ]
+                          }
+                        }
+                      },
+                      "additionalProperties": false,
+                      "required": [
+                        "db_findManyPost"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvalidInputError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "InvalidInputError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "input": {},
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "propertyPath": {
+                  "type": "string"
+                },
+                "invalidValue": {},
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "propertyPath",
+                "invalidValue",
+                "message"
+              ]
+            }
+          }
+        },
+        "required": [
+          "message",
+          "input",
+          "errors"
+        ]
+      }
+    }
+  }
+}

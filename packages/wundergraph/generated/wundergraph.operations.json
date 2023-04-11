@@ -1,0 +1,23 @@
+{
+  "graphql_operation_files": [
+    {
+      "operation_name": "CreatePost",
+      "api_mount_path": "CreatePost",
+      "file_path": "CreatePost.graphql",
+      "content": "mutation CreatePost($input: db_PostCreateInput!){db_createOnePost(data: $input){id}}"
+    },
+    {
+      "operation_name": "DeletePost",
+      "api_mount_path": "DeletePost",
+      "file_path": "DeletePost.graphql",
+      "content": "mutation DeletePost($id: Int!){db_deleteOnePost(where: {id: $id}){id}}"
+    },
+    {
+      "operation_name": "ReadPosts",
+      "api_mount_path": "ReadPosts",
+      "file_path": "ReadPosts.graphql",
+      "content": "query ReadPosts {db_findManyPost(orderBy: {created_at: desc}){id User {username} body created_at}}"
+    }
+  ],
+  "typescript_operation_files": null
+}

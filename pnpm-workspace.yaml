@@ -1,4 +1,2 @@
 packages:
-  - database
-  - sveltekit
-  - wundergraph
+  - packages/**
