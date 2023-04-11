@@ -32,6 +32,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_prettier: string;
 	export const npm_package_dependencies_wundergraph: string;
 	export const NODE: string;
+	export const npm_package_dependencies__wundergraph_svelte_query: string;
 	export const _P9K_TTY: string;
 	export const TURBO_INVOCATION_DIR: string;
 	export const NVM_CD_FLAGS: string;
@@ -40,6 +41,7 @@ declare module '$env/static/private' {
 	export const npm_package_devDependencies_typescript: string;
 	export const TERM: string;
 	export const SHELL: string;
+	export const npm_package_dependencies__tanstack_svelte_query: string;
 	export const npm_package_devDependencies_vite: string;
 	export const TMPDIR: string;
 	export const PWDEBUG: string;
@@ -159,6 +161,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_prettier: string;
 		npm_package_dependencies_wundergraph: string;
 		NODE: string;
+		npm_package_dependencies__wundergraph_svelte_query: string;
 		_P9K_TTY: string;
 		TURBO_INVOCATION_DIR: string;
 		NVM_CD_FLAGS: string;
@@ -167,6 +170,7 @@ declare module '$env/dynamic/private' {
 		npm_package_devDependencies_typescript: string;
 		TERM: string;
 		SHELL: string;
+		npm_package_dependencies__tanstack_svelte_query: string;
 		npm_package_devDependencies_vite: string;
 		TMPDIR: string;
 		PWDEBUG: string;

@@ -1,20 +1,20 @@
 <script lang="ts">
-	import type { PageData } from "./$types";
-	export let data: PageData;
-
 	import Posts from "$lib/Posts.svelte";
+	import { createQuery } from "$lib/wundergraph";
 
-	import { useSubscription, fetching } from "$lib/wundergraph.store";
-	import type { ReadPostsResponseData } from "wundergraph/generated/models";
+	const postsQuery = createQuery({ operationName: "ReadPosts" });
 
-	let posts: ReadPostsResponseData["db_findManyPost"] = [];
-	if ("db_findManyPost" in data) posts = data.db_findManyPost;
-
-	useSubscription("ReadPosts", (res) => {
-		if (res.data) {
-			posts = res.data.db_findManyPost;
-		}
-	});
+	$: ({ data, error, isLoading, isSuccess } = $postsQuery);
 </script>
 
-<Posts {posts} />
+{#if isLoading}
+	Loading...
+{/if}
+
+{#if error}
+	An error has occurred: {error.message}
+{/if}
+
+{#if isSuccess}
+	<Posts posts={data?.db_findManyPost} />
+{/if}

@@ -1,21 +1,30 @@
 <script lang="ts">
-	import Button from "./Button.svelte";
-	import { slide } from "svelte/transition";
-
+	import { useQueryClient } from "@tanstack/svelte-query";
 	import type { ReadPostsResponseData } from "wundergraph/generated/models";
-	import { useMutation } from "$lib/wundergraph.store";
-	const { mutate: deletePost } = useMutation("DeletePost");
+	import { createMutation, queryKey } from "./wundergraph";
+	import { slide } from "svelte/transition";
+	import Button from "./Button.svelte";
 
+	// props
 	export let post: ReadPostsResponseData["db_findManyPost"][number];
+
+	const client = useQueryClient();
+	const deletePostMutation = createMutation({ operationName: "DeletePost" });
+	const deletePost = async (id: number) => {
+		const ReadPostsKey = queryKey({ operationName: "ReadPosts" });
+		await $deletePostMutation.mutateAsync(
+			{ id },
+			{ onSuccess: () => client.invalidateQueries([ReadPostsKey]) }
+		);
+	};
 </script>
 
-<!-- Each message is wrapped in a li -->
 <li transition:slide class="post">
 	<!-- Message content -->
 	<span>{post.User.username} said "{post.body}" at {post.created_at}</span>
 
 	<!-- Button to delete the message -->
-	<Button on:click={() => deletePost({ id: post.id })}>&times;</Button>
+	<Button on:click={() => deletePost(post.id)}>&times;</Button>
 </li>
 
 <style>

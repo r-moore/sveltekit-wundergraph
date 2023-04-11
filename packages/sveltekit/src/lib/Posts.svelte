@@ -1,23 +1,31 @@
 <script lang="ts">
-	export let posts: ReadPostsResponseData["db_findManyPost"] = [];
-
+	import { useQueryClient } from "@tanstack/svelte-query";
+	import type { ReadPostsResponseData } from "wundergraph/generated/models";
+	import { createMutation, queryKey } from "./wundergraph";
+	import Post from "./Post.svelte";
 	import Button from "./Button.svelte";
 	import TextInput from "./TextInput.svelte";
 
-	import type { ReadPostsResponseData } from "wundergraph/generated/models";
+	// props
+	export let posts: ReadPostsResponseData["db_findManyPost"] = [];
 
-	import { useMutation } from "$lib/wundergraph.store";
-	import Post from "./Post.svelte";
+	// local state
+	let postBodyTextInput = ""; // bind to TextInput value
 
-	const { mutate: createPost } = useMutation("CreatePost");
-
-	let newPost = "";
-
+	const client = useQueryClient();
+	const createPostMutation = createMutation({ operationName: "CreatePost" });
 	const submitHandler = async () => {
-		await createPost({
-			input: { body: newPost, User: { connect: { username: "demo_user" } } },
-		});
-		newPost = "";
+		const ReadPostsKey = queryKey({ operationName: "ReadPosts" });
+		await $createPostMutation.mutateAsync(
+			{
+				input: {
+					body: postBodyTextInput,
+					User: { connect: { username: "demo_user" } },
+				},
+			},
+			{ onSuccess: () => client.invalidateQueries([ReadPostsKey]) }
+		);
+		postBodyTextInput = ""; // reset input after mutation
 	};
 </script>
 
@@ -34,7 +42,7 @@
 {/if}
 
 <form on:submit|preventDefault={submitHandler}>
-	<TextInput bind:value={newPost} />
+	<TextInput bind:value={postBodyTextInput} />
 	<Button type="submit">Add Post</Button>
 </form>
 

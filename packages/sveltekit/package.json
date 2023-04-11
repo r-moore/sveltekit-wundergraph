@@ -12,7 +12,9 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"dependencies": {
+		"@tanstack/svelte-query": "^4.29.1",
 		"@wundergraph/sdk": "^0.143.1",
+		"@wundergraph/svelte-query": "^0.1.0",
 		"wundergraph": "workspace:*"
 	},
 	"devDependencies": {
